@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>sitio proyecto</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Corales</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Inicio</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">Problemática</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Importancia</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="otro.html">Donaciones</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section class="page-section about-heading">
+            <div class="container">
+                <div class="about-heading-content">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-10 mx-auto">
+                            <div class="bg-faded rounded p-5">
+                                <main class="flex-shrink-0">
+                                    <!-- Navigation-->
+                                        <div class="container px-5">
+
+                                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <!-- Pricing section-->
+                                    <section class="bg-light py-5">
+                                        <div class="container px-5 my-5">
+                                            <div class="text-center mb-5">
+                                                <h1 class="fw-bolder"> Te invitamos a colaborar </h1>
+                                            </div>
+                                            <h3 class="lead fw-normal text-muted mb-0">Seleccione el monto que desea</h3>
+
+                                            <div class="espacioformulario">
+                                                <form action="#" method="get" id="formulariopersonal">
+                                                     <label for="ComidaPollo">
+                                                         $1000
+                                                     </label>
+                                                     <input type="checkbox" id="ComidaPollo">
+                                                     <div id="MostrarPorcionesPollo" style="display: none;"> 
+                                                       <label for="cantporcionpollo"> Sumar donaciones</label>
+                                                       <select id="cantporcionpollo">
+                                                         <option value="1">1</option>
+                                                         <option value="2">2</option>
+                                                         <option value="3">3</option>
+                                                         <option value="4">4</option>
+                                                       </select> <br>
+                                                      </div> 
+                                                      <br>
+                                                     <label for="ComidaCarne">
+                                                       $5000
+                                                     </label>
+                                                     <input type="checkbox" id="ComidaCarne"> <br>
+                                                     <div id="MostrarPorcionesCarne" style="display: none;">
+                                                         <label for="cantporcioncarne"> Sumar donaciones</label>
+                                                         <select id="cantporcioncarne">
+                                                           <option value="1">1</option>
+                                                           <option value="2">2</option>
+                                                           <option value="3">3</option>
+                                                           <option value="4">4</option>
+                                                         </select>
+                                                         
+                                                     </div>
+                                                     <div id="preciototal">precio: $0</div><br>
+                                                     <button type="submit">Donar </button>
+                                                </form>
+                                                <script>
+                                                    //Cuando ocurre el evento página Web cargada el navegador llama a la función DocumentoCargado()
+                                                    window.onload=DocumentoCargado; 
+                                       
+                                                    //En esta función se capturan todos los eventos requeridos por el script
+                                                    function DocumentoCargado(){
+                                                       let checkboxPollo = document.getElementById("ComidaPollo"); //obtiene los elementos del documento html y los asigna a variables
+                                                       let checkboxCarne = document.getElementById("ComidaCarne"); 
+                                                       let cantporcionespollo = document.getElementById("cantporcionpollo");
+                                                       let cantporcionescarne = document.getElementById("cantporcioncarne");
+                                                       cantporcionespollo.onchange = selectpolloporcion; // Se ejecuta la función selectpolloporcion() cuando cuando ocurre el evento
+                                                       cantporcionescarne.onchange = selectcarneporcion;
+                                                       checkboxPollo.onclick = checkboxPolloApretado; 
+                                                       checkboxCarne.onclick = checkboxCarneApretado;
+                                                       MostrarPrecioTotal(); // llama a la función 
+                                                    }
+                                                    //Cuando el usuario aprieta el checkbox pollo, se debe mostrar u ocultar el objeto select
+                                                    function checkboxPolloApretado()
+                                                    {
+                                                       if(document.getElementById("ComidaPollo").checked == true)
+                                                       {
+                                                           document.getElementById("MostrarPorcionesPollo").style.display = "block";
+                                                       }
+                                                       else
+                                                       {
+                                                           document.getElementById("MostrarPorcionesPollo").style.display = "none";
+                                                       }
+                                                       MostrarPrecioTotal();
+                                                    }
+                                                    function checkboxCarneApretado()
+                                                    {
+                                                       if(document.getElementById("ComidaCarne").checked == true)
+                                                       {
+                                                           document.getElementById("MostrarPorcionesCarne").style.display = "block";
+                                                       }
+                                                       else
+                                                       {
+                                                           document.getElementById("MostrarPorcionesCarne").style.display = "none";
+                                                       }
+                                                       MostrarPrecioTotal();
+                                                    }
+                                                    // En base a los checkbox y los objetos select, esta función calcula el precio total
+                                                    function MostrarPrecioTotal()
+                                                    {
+                                                      let precio = 0;
+                                       
+                                                      if (document.getElementById("ComidaPollo").checked == true)
+                                                      {
+                                                          precio += 1000 * document.getElementById("cantporcionpollo").value;
+                                                      }
+                                       
+                                                      if (document.getElementById("ComidaCarne").checked == true)
+                                                      {
+                                                          precio += 5000 * document.getElementById("cantporcioncarne").value;
+                                                      }
+                                                      document.getElementById("preciototal").innerHTML= "precio: $" + precio;
+                                                    }
+                                                    //Se ejecuta cuando cambia el valor del select
+                                                    function selectcarneporcion()
+                                                    {
+                                                      MostrarPrecioTotal();
+                                                    }
+                                                    function selectpolloporcion()
+                                                    {
+                                                      MostrarPrecioTotal();
+                                                    }
+                                       
+                                                </script>
+                                           </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </main>
+                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+                                <!-- Core theme JS-->
+                                <script src="js/scripts.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer text-faded text-center py-5">
+            <div class="container">
+                <p class="m-0 small"><img src="logo uade.png" alt="Logo de la empresa" class="logo">                  Milagros Peledrotti - Miranda Benitez - Valentina Bentivegna - Sabrina La Rosa. Nro: 9. Trabajo Grupal - Materia: Diseño y Desarrollo Web </p><a href="https://milipeledrotti.github.io/sitiogrupal/">Sitio grupal</a></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
