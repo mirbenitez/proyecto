@@ -93,11 +93,41 @@
                                                          
                                                      </div>
                                                      <div id="preciototal">Total: $0</div><br>
-                                                     <button type="submit" class="btn btn-primary"
-        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-  Donar
-</button>
+                                                     <button type="submit" class="btn btn-primary"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"id="btnDonar">Donar</button>
+                                                    <div id="mensaje" style="display: none;"></div>
                                                 </form>
+                                                <script>
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        document.getElementById('btnDonar').addEventListener('click', function(event) {
+                                                            event.preventDefault();
+                                                            var mensaje = document.getElementById('mensaje');
+                                                            mensaje.textContent = '¡La donación se ha realizado correctamente!';
+                                                            mensaje.style.display = 'block';
+                                            
+                                                            var btnVolverDonar = document.createElement('button');
+                                                            btnVolverDonar.textContent = 'Volver a Donar';
+                                                            btnVolverDonar.type = 'button';
+                                                            btnVolverDonar.className = 'btn btn-primary';
+                                                            btnVolverDonar.style.marginTop = '10px';
+                                                            btnVolverDonar.style.setProperty('--bs-btn-padding-y', '.25rem');
+                                                            btnVolverDonar.style.setProperty('--bs-btn-padding-x', '.5rem');
+                                                            btnVolverDonar.style.setProperty('--bs-btn-font-size', '.75rem');
+                                                            btnVolverDonar.addEventListener('click', function() {
+                                                                mensaje.style.display = 'none';
+                                                                btnVolverDonar.style.display = 'none';
+                                                                document.getElementById('btnDonar').style.display = 'block';
+                                                            });
+                                            
+                                                            var form = document.getElementById('formulariopersonal');
+                                                            form.appendChild(btnVolverDonar);
+                                            
+                                                            form.reset();
+                                                            document.getElementById('btnDonar').disabled = false;
+                                                            document.getElementById('btnDonar').style.display = 'none';
+                                                        });
+                                                    });
+                                                </script>
+                                                
                                                 <script>
                                                     //Cuando ocurre el evento página Web cargada el navegador llama a la función DocumentoCargado()
                                                     window.onload=DocumentoCargado; 
